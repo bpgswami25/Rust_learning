@@ -1,0 +1,72 @@
+/*
+**Question 2: Enums, Option, and Result**
+**Create a function that parses a string into an integer. If the string is empty, return `None`. If the string contains non-numeric characters, return a `Result::Err`. Otherwise, return the parsed number wrapped in `Some` and `Ok`.**
+
+**Concepts Covered:**
+- Enums
+- Option Enum
+- Result Enum
+- Pattern Matching
+
+--------------
+match value {
+    pattern1 => expression1,
+    pattern2 => expression2,
+    // more patterns...
+    _ => default_expression, // optional: matches anything not previously matched
+}
+// ...existing code...
+
+options and Results are powerful enums in Rust that help manage the presence or absence of values and handle errors gracefully. They are essential for writing safe and robust code.
+
+
+*/
+
+
+
+fn str_to_int(s: &str)-> Option<Result<i32, String>>{
+    if s.is_empty(){
+        return None;
+    }else{
+        match s.parse::<i32>(){
+            Ok(num) => Some(Ok(num)),
+            Err(_) => Some(Err(String::from("No integer value"))),
+
+        }
+    }
+}
+
+fn main() {
+
+    println!("{:?}",str_to_int("12"));
+    println!("{:?}",str_to_int("ak"));
+
+
+}
+
+
+
+/* 
+fn parseStringToInt(s: &str) -> Option<Result<i32, String>> {
+    if s.is_empty() {
+        return None;
+    }
+
+    match s.parse::<i32>() {
+        Ok(num) => Some(Ok(num)),
+        Err(_) => Some(Err(format!("'{}' contains non-numeric characters", s))),
+    }
+}
+
+
+fn main() {
+    let test_cases: Vec<&str> = vec!["42", "   ", "abc", "123abc", " "];
+    for test in test_cases {
+        match parseStringToInt(test) {
+            Some(Ok(num)) => println!("Parsed '{}' as {}", test, num),
+            Some(Err(e)) => println!("Error parsing '{}': {}", test, e),
+            None => println!("No input provided"),
+        }
+    }
+}
+*/

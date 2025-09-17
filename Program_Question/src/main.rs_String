@@ -1,0 +1,66 @@
+/*
+### **Question 1: Ownership and References**
+**Write a function that takes a string, counts the number of vowels in it, and returns the count. Ensure the function does not take ownership of the string. Also, allow the string to be modified inside the function.**
+
+**Concepts Covered:**
+- Ownership
+- Mutable and Immutable References
+- Heap & Stack
+
+---
+
+str:
+An immutable sequence of UTF-8 bytes.
+Usually seen as a reference: &str (string slice).
+Does not own the data; it borrows from somewhere else.
+Example: "hello" is a &str.
+
+String:
+An owned, growable, heap-allocated string.
+Can be mutated (e.g., you can push or pop characters).
+Example: String::from("hello").
+
+Summary:
+Use &str for read-only string data.
+Use String when you need ownership or to modify the string.
+
+*/
+
+
+fn find_vowels_str(s: &str) -> i32 {
+    let mut ret = 0;
+    if s.is_empty(){
+        return ret;
+    }else{
+    for c in s.chars() {
+        if "AEIOUaeiou".contains(c) {
+            ret += 1;
+        }
+    }
+    ret 
+    }
+}
+
+fn main() {
+
+    println!("Volwels in given string HELLO is {}",find_vowels_str("HELLO") );
+
+
+}
+
+
+
+/*
+fn NameVowels(s: &mut String) -> usize {
+    s.push_str(" modified"); // Example of modifying the string
+
+    s.chars().filter(|c| "aeiouAEIOU".contains(*c)).count()
+}
+
+
+fn main() {
+    let mut name = String::from("Alice");
+    let vowel_count = NameVowels(&mut name);
+    println!("The name '{}' has {} vowels.", name, vowel_count);
+}
+*/

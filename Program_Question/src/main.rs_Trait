@@ -1,0 +1,28 @@
+
+use std::fmt::Display;
+
+trait Printable{
+   fn print_info(&self);
+}
+
+struct Container<T>{
+    value : T,
+
+}
+
+impl<T: Display> Printable for Container<T>{
+
+fn print_info(&self) {
+        println!("Container holds: {}", self.value);
+    }
+
+}
+
+
+fn main() {
+    let int_container = Container { value: 42 };
+    let string_container = Container { value: String::from("Hello, Rust!") };
+
+    int_container.print_info();       // Output: Container holds: 42
+    string_container.print_info();   // Output: Container holds: Hello, Rust!
+}
