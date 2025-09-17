@@ -1,0 +1,33 @@
+/*
+###  **3. If-Else Conditions**
+**Question:**  
+Check if a number is positive, negative, or zero.
+
+**Topics:** Control flow, Comparison  
+**Input:** `-3`  
+**Output:** `"Negative"`
+
+---
+
+*/
+
+fn print_val_range(x:i32)
+{
+    if x < 0 {
+    println!("Value {} is Negative",x);
+    }else if x == 0 {
+        println!("Value {} is Zero",x);
+    }else{
+        println!("Value {} is Postive",x);
+    }
+}
+
+fn main()
+{
+    print_val_range(3);
+    print_val_range(-2);
+    print_val_range(2);
+    print_val_range(0);
+
+
+}

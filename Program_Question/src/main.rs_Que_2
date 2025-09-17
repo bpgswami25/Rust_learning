@@ -1,0 +1,21 @@
+/*
+###  **2. Mutable Variables**
+**Question:**  
+Declare a mutable integer variable, increment it by 10, and print the result.
+
+**Topics:** Mutability, Variable declaration  
+**Input:** `5`  
+**Output:** `15`
+
+*/
+
+
+fn main()
+{
+    let mut x = 5;
+
+    x+=10;
+
+    println!("Output {}",x);
+
+}

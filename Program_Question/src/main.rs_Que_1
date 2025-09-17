@@ -1,0 +1,23 @@
+/*
+###  **1. Ownership and Borrowing**
+**Question:**  
+Write a function that takes a string slice and returns its length without taking ownership.
+
+**Topics:** Ownership, Borrowing, References  
+**Input:** `"hello"`  
+**Output:** `5`
+
+*/
+
+fn str_len(s : &str) -> usize
+{
+    return s.len();
+}
+
+fn main()
+{
+    let s = String::from("hello from bharat");
+    let input = &s[0..5];
+    println!("Given Input string: {} and Output ength is: {}",input,str_len(input));
+
+} 
