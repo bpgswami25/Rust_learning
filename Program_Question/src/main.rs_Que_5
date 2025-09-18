@@ -1,0 +1,32 @@
+/*
+###  **5. Struct and Method**
+**Question:**  
+Define a `Rectangle` struct and implement a method to calculate area.
+
+**Topics:** Structs, Methods  
+**Input:** `width = 4, height = 5`  
+**Output:** `20`
+
+*/
+
+struct ReactSize{
+    width:i32,
+    height:i32,
+}
+
+fn cal_area(val:ReactSize){
+    println!("Area of Rectangle is {}",val.height*val.width);
+
+}
+
+fn main()
+
+{
+let r1  = ReactSize { width: 4, height: 5 };
+cal_area(r1);
+
+let r1  = ReactSize { width: 5, height: 5 };
+cal_area(r1);
+
+
+}

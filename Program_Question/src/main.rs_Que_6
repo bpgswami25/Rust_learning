@@ -1,0 +1,34 @@
+/*
+
+###  **6. Enum with Match**
+**Question:**  
+Create an enum `TrafficLight` and return the duration for each light.
+
+**Topics:** Enums, Match  
+**Input:** `TrafficLight::Red`  
+**Output:** `"Stop for 30 seconds"`
+
+*/
+
+enum TrafficLight{
+Red,
+Yellow,
+Green,
+}
+
+fn timeof_traffic_signal(val:TrafficLight) -> i32
+{
+    match val{
+        TrafficLight::Green => return 60,
+        TrafficLight::Yellow => return 20,
+        TrafficLight::Red => return 30,
+    }
+}
+
+fn main()
+{
+    println!("Green light is for {} seconds",timeof_traffic_signal(TrafficLight::Green));
+    println!("Green light is for {} seconds",timeof_traffic_signal(TrafficLight::Yellow));
+    println!("Green light is for {} seconds",timeof_traffic_signal(TrafficLight::Red));
+
+}

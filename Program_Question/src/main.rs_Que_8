@@ -1,0 +1,31 @@
+/*
+###  **8. Result and Error Handling**
+**Question:**  
+Write a function to divide two numbers and return a `Result`.
+
+**Topics:** Error handling, Result  
+**Input:** `10, 0`  
+**Output:** `"Error: Division by zero"`
+
+*/
+
+fn divide(numerator:i32, denominator:i32) -> Result<f32, String>
+{
+    if denominator ==0 {
+        Err(String::from("Error: Division by zero"))
+    }else{
+        Ok(numerator as f32/denominator as f32)
+    }
+
+}
+
+
+fn main()
+{
+    println!("3/2 = {:?}",divide(3,2));
+    println!("3/5 = {:?}",divide(3,5));
+    println!("3/0 = {:?}",divide(3,0));
+    println!("10/-10 = {:?}",divide(10,-10));
+
+
+}

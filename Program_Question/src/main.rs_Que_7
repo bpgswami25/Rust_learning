@@ -1,0 +1,26 @@
+/*
+###  **7. Vector Iteration**
+**Question:**  
+Print all elements of a vector using a `for` loop.
+
+**Topics:** Vectors, Iteration  
+**Input:** `[1, 2, 3]`  
+**Output:**  
+```
+1  
+2  
+3
+```
+*/
+
+fn main()
+{
+    let mut v = vec![1,2,3,4];
+    v.push(6);
+
+    for x in &v {
+        println!("{}",x);
+    }
+
+    println!("{:?}",v);
+}
