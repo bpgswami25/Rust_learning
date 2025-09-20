@@ -1,0 +1,28 @@
+/*
+###  **17. Ownership Transfer**
+**Question:**  
+Show how ownership is transferred when passing a variable to a function.
+
+**Topics:** Ownership, Move semantics  
+**Input:** `"Rust"`  
+**Output:** `"Ownership moved"`
+
+*/
+
+
+
+fn ownership_transfer(s:String){
+
+    println!("Ownership moved: {}",s)
+}
+
+fn main()
+{
+    let s = String::from("Rust");
+    println!("Inout: {}",s);
+
+    ownership_transfer(s);
+
+   // println!("Inout: {}",s); //Error here
+    
+}

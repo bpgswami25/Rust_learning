@@ -1,0 +1,26 @@
+/*
+###  **12. Loop with Break**
+**Question:**  
+Use a `loop` to count from 1 to 5 and break when done.
+
+**Topics:** Loops, `break`  
+**Output:**  
+```
+1  
+2  
+3  
+4  
+5
+```
+
+*/
+
+fn main()
+{
+    for i in 1..10{
+        println!("{}",i);
+        if i==5{
+            break;
+        }
+    }
+}

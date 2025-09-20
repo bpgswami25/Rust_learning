@@ -1,0 +1,23 @@
+/*
+###  **16. String Concatenation**
+**Question:**  
+Concatenate two strings and print the result.
+
+**Topics:** Strings, `+` operator  
+**Input:** `"Hello", "World"`  
+**Output:** `"HelloWorld"`
+
+*/
+
+fn main()
+{
+    let s1 = String::from("Hello");
+    
+    let s2 = String::from("World");
+    let s = format!("{}{}", s1, s2);
+    println!("{}",s);
+
+    let s2 = "World";
+    let s = s1+s2;
+    println!("{}",s);
+}

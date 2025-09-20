@@ -1,0 +1,24 @@
+/*
+###  **9. String Split and Count**
+**Question:**  
+Count the number of words in a string.
+
+**Topics:** Strings, Iterators  
+**Input:** `"Rust is fast"`  
+**Output:** `3`
+
+*/
+
+fn string_split_count(s:&str)
+{
+     let parts: Vec<&str> = s.split(' ').collect();
+     println!("Word in string {}",parts.len());
+}
+
+
+fn main()
+{
+    string_split_count("Rust is fast");
+    string_split_count("Hello Wrold");
+
+}

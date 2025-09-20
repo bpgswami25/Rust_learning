@@ -1,0 +1,22 @@
+/*
+###  **11. Tuple Destructuring**
+**Question:**  
+Destructure a tuple and print its elements.
+
+**Topics:** Tuples, Pattern matching  
+**Input:** `(10, "Rust")`  
+**Output:**  
+```
+10  
+Rust
+
+*/
+
+
+fn main()
+{
+    let t = (10,"rust");
+
+    println!("{}",t.0);
+    println!("{}",t.1);
+}

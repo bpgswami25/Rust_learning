@@ -1,0 +1,22 @@
+/*
+###  **10. Module and Visibility**
+**Question:**  
+Create a module with a public function that prints a greeting.
+
+**Topics:** Modules, `pub` keyword  
+**Input:** _None_  
+**Output:** `"Hello from module!"`
+
+*/
+
+mod module{
+    pub fn say_hello(){
+        println!{"Hello from module!"};
+    }
+}
+
+fn main()
+{
+    module::say_hello();
+
+}

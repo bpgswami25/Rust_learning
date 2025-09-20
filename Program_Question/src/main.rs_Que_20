@@ -1,0 +1,27 @@
+/*
+###  **20. Vector Push and Pop**
+**Question:**  
+Push elements into a vector and pop the last one.
+
+**Topics:** Vectors, Stack operations  
+**Input:** `[1, 2, 3]`  
+**Output:**  
+```
+Pushed: 4  
+Popped: 4  
+Vector: [1, 2, 3]
+
+*/
+
+fn main(){
+
+    let mut v = vec![1,2,3];
+    println!("{:?}",v);
+    v.push(4);
+    println!("{:?}",v);
+
+     println!("{:?}",v.pop());
+
+    println!("{:?}",v);
+
+}

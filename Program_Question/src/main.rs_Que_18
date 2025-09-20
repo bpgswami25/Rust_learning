@@ -1,0 +1,32 @@
+/*
+###  **18. Cloning**
+**Question:**  
+Clone a string before passing it to a function to retain ownership.
+
+**Topics:** Cloning, Ownership  
+**Input:** `"Rust"`  
+**Output:**  
+```
+Function received: Rust  
+Original: Rust
+```
+
+*/
+
+fn ownership_transfer(s:String){
+
+    println!("Ownership moved: {}",s)
+}
+
+fn main()
+{
+    let s = String::from("Rust");
+    println!("Inout: {}",s);
+
+    let s2 = s.clone();
+
+    ownership_transfer(s);
+
+    println!("Inout clone: {}",s2);
+    
+}

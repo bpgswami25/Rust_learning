@@ -1,0 +1,17 @@
+/*
+###  **15. Array Indexing**
+**Question:**  
+Access and print the third element of an array.
+
+**Topics:** Arrays, Indexing  
+**Input:** `[10, 20, 30, 40]`  
+**Output:** `30`
+
+*/
+
+
+fn main()
+{
+    let arr = [10,20,30,40,50];
+    println!("{}",arr[2]);
+}

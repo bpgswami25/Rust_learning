@@ -1,0 +1,29 @@
+/*
+###  **19. Option Type**
+**Question:**  
+Return `Some` if a number is even, `None` otherwise.
+
+**Topics:** Option, Pattern matching  
+**Input:** `4`  
+**Output:** `"Some(4)"`
+
+
+*/
+
+fn num_even_check(n:i32)-> Option<i32> 
+{
+    if n%2 != 0 {
+        None
+    }else{
+        Some(n)
+    }
+}
+
+
+fn main()
+{
+    println!("Is value 4 even: {:?}",num_even_check(4));
+    println!("Is value 5 even: {:?}",num_even_check(5));
+    println!("Is value 2 even: {:?}",num_even_check(2));
+
+}

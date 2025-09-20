@@ -1,0 +1,28 @@
+/*
+###  **13. While Loop**
+**Question:**  
+Print numbers from 1 to 5 using a `while` loop.
+
+**Topics:** Loops, Conditions  
+**Output:**  
+```
+1  
+2  
+3  
+4  
+5
+```
+*/
+
+fn main()
+{
+    let mut i=1;
+    #[warn(while_true)]
+    while true{
+        println!("{}",i);
+        if i==5{
+            break;
+        }
+        i+=1;
+    }
+}
