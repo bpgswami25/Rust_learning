@@ -9,24 +9,21 @@ Define a `Rectangle` struct and implement a method to calculate area.
 
 */
 
-struct ReactSize{
+struct Rectangle{
     width:i32,
     height:i32,
 }
 
-fn cal_area(val:ReactSize){
-    println!("Area of Rectangle is {}",val.height*val.width);
-
+impl Rectangle {
+    fn area(&self) -> i32 {
+        self.width * self.height
+    }
 }
 
 fn main()
 
 {
-let r1  = ReactSize { width: 4, height: 5 };
-cal_area(r1);
-
-let r1  = ReactSize { width: 5, height: 5 };
-cal_area(r1);
-
+    let rect = Rectangle { width: 3, height: 5 };
+    println!("Area: {}", rect.area());
 
 }

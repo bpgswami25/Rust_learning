@@ -19,4 +19,8 @@ fn main()
 
     println!("{}",t.0);
     println!("{}",t.1);
+
+    let (a, b) = t;
+    println!("{}", a);
+    println!("{}", b);
 }
