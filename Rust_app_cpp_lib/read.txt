@@ -1,0 +1,8 @@
+g++ -c -fPIC lib.cpp -o add.o
+
+g++ -shared -o libadd.so add.o
+
+export LD_LIBRARY_PATH=.
+
+cargo run
+

@@ -1,0 +1,9 @@
+[package]
+name = "Rust_app_cpp_lib"
+version = "0.1.0"
+edition = "2024"
+
+# in Cargo.toml [package] section
+build = "build.rs"
+
+[dependencies]

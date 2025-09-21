@@ -1,0 +1,11 @@
+# ...existing code...
+[package]
+name = "Rust_app_Cpp_lib"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+# ...existing code...
+[build-dependencies]
+cc = "1.0"
+# ...existing code...
