@@ -1,0 +1,52 @@
+//Trait and impl block
+
+
+trait show{
+    fn print(&self);
+}
+
+struct car
+{
+    name: String,
+}
+
+impl car{
+    fn car(s:String)-> Self{
+        Self{name :s}
+    }
+}
+
+
+struct Price
+{
+    val:i32,
+}
+
+impl Price
+{
+    fn new(v:i32) -> Self{
+        Self{val:v}
+    }
+}
+
+impl show for car{
+    fn print(&self){
+        println!("Name of car brand is: {:?}",self.name);
+    }
+}
+
+impl show for Price{
+    fn print(&self){
+        println!("Price of car is: {:?}",self.val);
+    }
+
+}
+
+fn main()
+{
+    let b = car::car(String::from("BMW"));
+    let v = Price::new(100000);
+    b.print();
+    v.print();
+
+}

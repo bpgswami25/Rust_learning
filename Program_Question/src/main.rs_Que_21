@@ -1,0 +1,72 @@
+//Trait , generic programming and impl block
+
+/*
+
+Question 2: Structs, Traits, and Generics**
+**Define a trait `Area` with a method `calculate_area`. Implement this trait for two structs: `Circle` and `Rectangle`. Use generics to allow different numeric types (e.g., `f32`, `f64`) for dimensions.**
+
+**Concepts Covered:**
+- Traits
+- Structs
+- Generics
+- Trait Bounds
+
+
+*/
+use std ;
+
+trait Area
+{
+    fn calculate_area(&self);
+}
+
+struct Circle<T>
+{
+    radius:T,
+}
+struct Rectangle<T>
+{
+    height:T,
+    width:T,
+}
+
+impl <T> Circle<T>{
+    fn new(r:T)-> Self{
+        Self{radius:r}
+    }
+}
+
+impl <T> Rectangle<T>{
+    fn new(h:T,w:T)->Self{
+        Self{height:h,width:w}
+    }
+}
+
+impl<T: Into<f64> + Copy> Area for Circle<T> { 
+    fn calculate_area(&self){
+        println!("Area of Circle is: {:.2}",std::f64::consts::PI * self.radius.into() * self.radius.into());
+
+    }
+}
+
+impl<T: Into<f64> + Copy> Area for Rectangle<T>{
+     fn calculate_area(&self){
+        println!("Area of Circle is: {:.2}",self.height.into() * self.width.into());
+
+    }
+}
+
+fn main()
+{    let c1 = Circle::new(8);
+    let c2 = Circle::new(8.5);
+
+    c1.calculate_area();
+    c2.calculate_area();
+
+    let r1 = Rectangle::new(5, 6);
+
+    let r2 = Rectangle::new(5.5, 6.2);
+
+    r1.calculate_area();
+    r2.calculate_area();
+}
