@@ -1,0 +1,35 @@
+/*
+### **Question 1: Ownership, Borrowing, and Result Enum**
+**Create a function that reads a file and returns its contents as a `String`. If the file does not exist or cannot be read, return a `Result::Err` with a custom error message. Ensure the function does not take ownership of the file path string.**
+
+**Concepts Covered:**
+- Ownership
+- Immutable References
+- Result Enum
+- Error Handling
+
+*/
+
+
+
+use std::fs::File;
+use std::io::{self, Read};
+
+
+fn read_file_value(s:String) -> std::io::Result<()>{
+
+  
+    let mut file = File::open(s)?; // Open the file
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?; // Read the file into a string
+    println!("File contents:\n{}", contents);
+    Ok(())
+
+}
+
+
+fn main(){
+println!("{:?}",read_file_value(String::from("example.txt")));
+println!("{:?}",read_file_value(String::from("/workspaces/Rust_learning/Program_Question/src/abc.txt")));
+
+}

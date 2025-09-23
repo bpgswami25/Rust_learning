@@ -1,0 +1,65 @@
+//Create two thread one will print even number and other one odd number in a sequence
+//Output - 1,2,3,4,5,6,7,,8,9,10...
+
+use std::thread;
+
+use std::sync::{Arc, Mutex, Condvar};
+
+pub fn print_even(pair: Arc<(Mutex<i32>, Condvar)>)
+{
+    
+    let mut n =2;
+    let (lock, cvar) = &*pair;
+
+    loop{
+       let mut n = lock.lock().unwrap();
+        if *n > 10 {
+            cvar.notify_all();
+            break;
+        }
+        if *n % 2 == 0 {
+            print!(" {}", *n);
+            *n += 1;
+            cvar.notify_all();
+        } else {
+            n = cvar.wait(n).unwrap();
+        }
+        
+    }
+}
+
+pub fn print_odd(pair: Arc<(Mutex<i32>, Condvar)>)
+{
+    
+    let mut n =1;
+    let (lock, cvar) = &*pair;
+    loop{
+        let mut n = lock.lock().unwrap();
+        if *n > 10 {
+            cvar.notify_all();
+            break;
+        }
+        if *n % 2 != 0 {
+            print!(" {}", *n);
+            *n += 1;
+            cvar.notify_all();
+        } else {
+            n = cvar.wait(n).unwrap();
+        }    
+    }
+}
+
+fn main()
+{
+    let pair = Arc::new((Mutex::new(1), Condvar::new()));
+
+    let pair1 = Arc::clone(&pair);
+    let pair2 = Arc::clone(&pair);
+
+    let t2 = thread::spawn(move || print_odd(pair2));
+
+    let t1 = thread::spawn(move || print_even(pair1));
+    
+    t1.join().unwrap();
+    t2.join().unwrap();
+}
