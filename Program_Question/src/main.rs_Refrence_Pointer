@@ -1,0 +1,23 @@
+// Refrence Pointer example
+
+use::std::rc::Rc;
+
+fn main()
+{
+    let s = Rc::new(String::from("Rust Refrence Pointer"));
+
+    println!("Counter value of RC Pointer: {}",Rc::strong_count(&s));
+
+    let s1 = s.clone();
+
+    println!("Counter value of RC Pointer: {}",Rc::strong_count(&s));
+
+   { 
+    let s2 = Rc::clone(&s);
+
+    println!("Counter value of RC Pointer: {}",Rc::strong_count(&s));
+   }
+
+   println!("Counter value of RC Pointer: {}",Rc::strong_count(&s));
+
+}

@@ -1,0 +1,162 @@
+// Write doubly link list
+
+/*
+Output : 
+push front
+ 4 3 2 1
+ push back
+ 4 3 2 1 5 6
+ remove front
+ 3 2 1 5 6
+ remove back
+ 3 2 1 5
+*/
+
+use std::rc::Rc;
+use std::cell::RefCell;
+
+
+
+#[derive(Debug)]
+struct Node <T>{
+    val:T,
+    next : pointer<T>,
+    pre : pointer<T>
+}
+
+#[derive(Debug)]
+struct list <T>
+{
+    head: pointer<T>,
+    tail: pointer<T>,
+}
+
+type pointer<T> = Option<Rc<RefCell<Node<T>>>>;
+
+
+impl<T: std::fmt::Debug> Node<T>
+{
+    fn new(element : T)-> Rc<RefCell<Node<T>>>{
+        Rc::new(RefCell::new(Node{val:element,next:None,pre:None}))
+    }
+
+}
+
+impl <T: std::fmt::Debug> list<T>
+{
+    fn new()->Self{
+        list{head:None,tail:None}
+    }
+    fn push_front(&mut self, ele :T){
+        let new_node = Node::new(ele);
+        match self.head.take(){
+            Some(old_head)=>{
+                old_head.borrow_mut().pre = Some(new_node.clone());
+                new_node.borrow_mut().next = Some(old_head).clone();
+                self.head = Some(new_node);
+            }
+            None =>{
+                self.tail = Some(new_node.clone());
+                self.head = Some(new_node);
+            }
+        }
+
+    }
+
+    fn push_back(&mut self, ele:T){
+        let new_node = Node::new(ele);
+        match self.tail.take() {
+            Some(old_tail)=>{
+                old_tail.borrow_mut().next = Some(new_node.clone());
+                new_node.borrow_mut().pre = Some(old_tail.clone());
+                self.tail = Some(new_node);
+            }
+            None =>{
+                self.head = Some(new_node.clone());
+                self.tail = Some(new_node);
+            }
+        }
+    }
+
+    fn remove_front(&mut self) {
+        match self.head.take() {
+            Some(old_head) => {
+                let old_next = old_head.borrow_mut().next.clone();
+                match old_next{
+                    Some(new_head)=>{
+                        new_head.borrow_mut().pre=None;
+                        self.head=Some(new_head);
+                    }
+                    None=>{
+                        self.tail=None;
+                    }
+
+                }
+            }
+            None => {
+                println!("List empty");
+            }
+        }
+    }
+
+    
+    fn remove_last(&mut self) {
+        match self.tail.take() {
+            Some(old_tail) => {
+                let prev = old_tail.borrow_mut().pre.take();
+                match prev {
+                    Some(new_tail) => {
+                        new_tail.borrow_mut().next = None;
+                        self.tail = Some(new_tail);
+                    }
+                    None => {
+                        
+                        self.head = None;
+                    }
+                }
+            }
+            None => {
+                println!("List empty");
+            }
+        }
+    }
+
+    
+    fn print(&self) {
+        let mut curr = self.head.clone(); 
+
+        while let Some(node) = curr {
+            print!(" {:?}", node.borrow().val);
+            curr = node.borrow().next.clone(); 
+        }
+        println!();
+    }
+}
+
+
+
+fn main(){
+    let mut doubly_list: list<i32> = list::new();
+    doubly_list.push_front(1);
+    doubly_list.push_front(2);
+    doubly_list.push_front(3);
+    doubly_list.push_front(4);
+
+   // println!("{:?}",doubly_list.head);
+   doubly_list.print();
+
+   doubly_list.push_back(5);
+   doubly_list.push_back(6);
+
+   doubly_list.print();
+
+   doubly_list.remove_front();
+   doubly_list.print();
+
+   doubly_list.remove_last();
+   doubly_list.print();
+
+   
+
+
+}

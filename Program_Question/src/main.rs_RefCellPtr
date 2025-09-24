@@ -1,0 +1,15 @@
+//Refrence cell pointer example
+
+use std::cell::RefCell;
+
+fn main(){
+
+    let s = RefCell::new(String::from("Rust"));
+    println!("{:?}",s);
+
+    *s.borrow_mut() = String::from("c++");
+
+    println!("{:?}",s);
+
+
+}
