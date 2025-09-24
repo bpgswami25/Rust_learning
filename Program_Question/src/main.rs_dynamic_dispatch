@@ -1,0 +1,40 @@
+
+trait base{
+    fn add(&self);
+}
+
+struct float_value{
+    a:f64,
+    b:f64,
+}
+
+struct int_value {
+    a:i64,
+    b:i64,
+}
+
+impl base for float_value{
+    fn add(&self){
+        println!("Sum is: {}",self.a+self.b);
+    }
+}
+
+impl base for int_value{
+    fn add(&self){
+        println!("Sum is: {}",self.a+self.b);
+    }
+}
+
+fn add_value(Base: &dyn base){
+    Base.add();
+}
+
+
+fn main()
+{
+    let m = float_value{a:4.5,b:5.6};
+    let q = int_value{a:2,b:5};
+    add_value(&m);
+    add_value(&q);
+
+}

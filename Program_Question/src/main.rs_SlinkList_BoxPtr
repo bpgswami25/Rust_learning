@@ -1,0 +1,65 @@
+// Create a singly link list using Box Pointer
+
+
+type pointer = Option<Box<Node>>;
+
+#[derive(Debug)]
+struct Node{
+    val:i32,
+    next:pointer,
+}
+#[derive(Debug)]
+struct LinkList{
+    head:pointer,
+}
+
+impl LinkList{
+    fn create_empty_list()->Self{
+        LinkList{head:None}
+    }
+
+    fn add(&mut self,ele:i32){
+        let pre_node = self.head.take();
+        let curr_node = Box::new(Node{val:ele,next:pre_node});
+        self.head = Some(curr_node);
+    }
+
+    fn remove(&mut self) ->Option<i32>{
+        let curr_head = self.head.take();
+        match curr_head{
+            Some(old_head)=>{
+                self.head=old_head.next;
+                Some(old_head.val)
+            }
+            None=>None
+        }
+    }
+
+    fn print(&mut self)
+    {
+        let mut curr_head = &self.head;
+        
+        while let Some(node) = curr_head {
+            println!("{}", node.val);
+            curr_head = &node.next;
+        }
+
+
+    }
+}
+
+
+fn main()
+{
+    let mut list = LinkList::create_empty_list();
+    list.add(5);
+    list.add(6);
+    list.add(7);
+
+    println!("{:?}",list);
+
+    list.remove();
+
+    println!("{:?}",list);
+
+}

@@ -1,0 +1,19 @@
+//Store int value in head using Box pointer and also use dref trait and drop trait
+
+struct data{
+    value:i32,
+}
+
+impl Drop for data{
+    fn drop(&mut self){
+        println!("Value is dropped");
+    }
+}
+
+fn main()
+{
+    let ptr = data{value:5};
+    let a = Box::new(ptr);
+    println!("value of Box ptr is {}",a.value);
+
+}
