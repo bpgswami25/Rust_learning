@@ -1,0 +1,36 @@
+// Macro with identifier , type , expression 
+
+use std::io;
+
+macro_rules! input{
+    ($t:ty) =>{{
+        let mut input_val = String::new();
+        io::stdin()
+                    .read_line(&mut input_val)
+                    .expect("Failed to read");
+            input_val.trim().parse::<$t>().expect("Failed to parse input")
+
+    }}
+
+}
+
+macro_rules! function{
+    ($func: ident,$input:ident, $type: ty) =>{
+        fn $func($input:$type){
+            println!("value is {}",$input);
+        }
+
+    }
+}
+
+function!(f1,x,i32);
+
+fn main()
+{
+    println!("Provide input int value: ");
+   let ret:i32 = input!(i32);
+   println!("input int value: is {} ", &ret);
+
+   f1(ret);
+
+}
