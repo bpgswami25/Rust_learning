@@ -1,0 +1,10 @@
+[package]
+name = "rust_CPP"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# ...existing code...
+[build-dependencies]
+cc = "1.0"
+# ...existing code...
