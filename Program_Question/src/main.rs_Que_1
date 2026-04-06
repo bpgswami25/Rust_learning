@@ -16,7 +16,7 @@ fn str_len(s : &str) -> usize
 
 fn main()
 {
-    let s = String::from("hello from bharat");
+    let s = String::from("hello from Rust");
     let input = &s[0..5];
     println!("Given Input string: {} and Output ength is: {}",input,str_len(input));
 
